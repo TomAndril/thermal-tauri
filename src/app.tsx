@@ -1,11 +1,9 @@
-import usePrinterStatus from "./features/printer-status/hooks/use-printer-status";
+import PrintText from "./features/print-text/print-text";
 
 export default function App() {
-  usePrinterStatus();
-
   return (
-    <main className="container">
-      <h1>Hello World</h1>
+    <main className="mx-auto max-w-md mt-18">
+      <PrintText />
     </main>
   );
 }

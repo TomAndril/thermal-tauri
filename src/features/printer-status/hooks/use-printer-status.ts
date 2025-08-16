@@ -1,13 +1,19 @@
 import { invoke } from "@tauri-apps/api/core";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { toast } from "sonner";
+import { create } from "zustand";
 
 interface PrinterStatus {
   status: "connected" | "disconnected";
 }
 
+const usePrinterStatusStore = create<PrinterStatus>((set) => ({
+  status: "disconnected",
+  setStatus: (status: "connected" | "disconnected") => set({ status }),
+}));
+
 export default function usePrinterStatus() {
-  const hasCheckedRef = useRef(false);
+  const printerStatus = usePrinterStatusStore((state) => state.status);
 
   async function getPrinterStatus() {
     const { status } = await invoke<PrinterStatus>("get_printer_status");
@@ -16,6 +22,7 @@ export default function usePrinterStatus() {
         toast.success("Printer connected", {
           description: "Printer is ready to use",
         });
+        usePrinterStatusStore.setState({ status: "connected" });
         break;
       case "disconnected":
         toast.error("Printer disconnected", {
@@ -29,16 +36,14 @@ export default function usePrinterStatus() {
           duration: Infinity,
           dismissible: false,
         });
+        usePrinterStatusStore.setState({ status: "disconnected" });
         break;
     }
   }
 
   useEffect(() => {
-    if (!hasCheckedRef.current) {
-      hasCheckedRef.current = true;
-      getPrinterStatus();
-    }
+    getPrinterStatus();
   }, []);
 
-  return null;
+  return { status: printerStatus };
 }
