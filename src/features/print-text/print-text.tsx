@@ -28,7 +28,9 @@ export default function PrintText() {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     if (status === "connected") {
-      printText(values.text);
+      printText(values.text).then(() => {
+        form.reset();
+      });
     }
   }
 
