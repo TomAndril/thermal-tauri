@@ -3808,7 +3808,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "thermal-tauri"
+name = "thermal_printer"
 version = "0.1.0"
 dependencies = [
  "serde",

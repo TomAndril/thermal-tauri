@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "thermal-tauri",
+  "productName": "Thermal Printer",
   "version": "0.1.0",
-  "identifier": "com.tomasnasjleti.thermal-tauri",
+  "identifier": "com.tomasnasjleti.thermal-printer",
   "build": {
     "beforeDevCommand": "yarn dev",
     "devUrl": "http://localhost:1420",
@@ -12,7 +12,7 @@
   "app": {
     "windows": [
       {
-        "title": "My Thermal Printer App",
+        "title": "Thermal Printer",
         "width": 800,
         "height": 600
       }
@@ -30,6 +30,9 @@
       "icons/128x128@2x.png",
       "icons/icon.icns",
       "icons/icon.ico"
-    ]
+    ],
+    "macOS": {
+      "bundleName": "Thermal Printer"
+    }
   }
 }
