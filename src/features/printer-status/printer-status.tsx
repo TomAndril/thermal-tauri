@@ -1,7 +1,25 @@
+import usePrinterStatus from "@/hooks/use-printer-status";
+import { useEffect } from "react";
+import { toast } from "sonner";
+
 export default function PrinterStatus() {
-  return (
-    <div className="flex flex-col gap-2">
-      <h1>Printer Status</h1>
-    </div>
-  );
+  const { status, getPrinterStatus } = usePrinterStatus();
+
+  useEffect(() => {
+    if (status?.status === "connected") {
+      toast.success("Printer connected", {
+        description: "Printer is ready to use",
+      });
+    } else {
+      toast.error("Printer disconnected", {
+        description: "Please connect the printer to continue",
+        action: {
+          label: "Try Again",
+          onClick: () => {
+            getPrinterStatus();
+          },
+        },
+      });
+    }
+  }, [status]);
 }
