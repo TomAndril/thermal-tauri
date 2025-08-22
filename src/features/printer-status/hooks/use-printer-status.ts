@@ -1,5 +1,4 @@
 import { invoke } from "@tauri-apps/api/core";
-import { useEffect } from "react";
 import { toast } from "sonner";
 import { create } from "zustand";
 
@@ -41,9 +40,5 @@ export default function usePrinterStatus() {
     }
   }
 
-  useEffect(() => {
-    getPrinterStatus();
-  }, []);
-
-  return { status: printerStatus };
+  return { status: printerStatus, getPrinterStatus };
 }
