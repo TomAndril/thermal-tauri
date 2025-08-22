@@ -9,6 +9,6 @@ import "./index.css";
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <ThemeProvider defaultTheme="dark">
     <App />
-    <Toaster />
+    <Toaster richColors />
   </ThemeProvider>
 );

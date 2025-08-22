@@ -44,7 +44,7 @@ export default function PrintQR() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input {...field} placeholder="QR Title" />
+                <Input {...field} placeholder="Title" />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -56,7 +56,7 @@ export default function PrintQR() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input {...field} placeholder="URL" className="mt-4" />
+                <Input {...field} placeholder="Link" className="mt-4" />
               </FormControl>
               <FormMessage />
             </FormItem>
