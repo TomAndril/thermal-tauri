@@ -1,6 +1,6 @@
 [package]
 name = "thermal_printer"
-version = "0.1.0"
+version = "0.2.0"
 description = "Thermal Printer App"
 authors = ["Tomas Nasjleti"]
 edition = "2021"
